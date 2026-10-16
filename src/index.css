@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme {
+  --color-carolina-200: #add2ed;
+  --color-carolina-300: #99c3e3;
+  --color-carolina-400: #7bafd4;
+  --color-ink: #060a13;
+  --color-panel: #0b1324;
+  --color-line: rgba(153, 195, 227, 0.14);
+  --color-chalk: #eef3f8;
+  --color-mute: #8fa3ba;
+  --color-ok: #3ddc97;
+  --color-warn: #f5b642;
+  --color-bad: #ff6b6b;
+
+  --font-display: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --container-site: 1180px;
+
+  --animate-dash: dash 1.2s linear infinite;
+  @keyframes dash {
+    to {
+      stroke-dashoffset: -40;
+    }
+  }
+}
+
+/* The diagram's SVG text reads these directly, so they are always defined. */
+:root {
+  color-scheme: dark;
+  --font-display: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: #060a13;
+  color: #eef3f8;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(123, 175, 212, 0.35);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid #7bafd4;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+@layer components {
+  .wrap {
+    @apply mx-auto w-full max-w-site px-4 sm:px-6 lg:px-8;
+  }
+  .eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-[0.18em] text-carolina-300;
+  }
+  .h2 {
+    @apply font-display text-[clamp(1.9rem,4.2vw,3rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-chalk;
+  }
+  .lede {
+    @apply text-[15px] leading-relaxed text-mute sm:text-base;
+  }
+  .card {
+    @apply rounded-2xl border border-line bg-panel/80;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full text-sm font-medium transition;
+    @apply bg-carolina-400 text-ink hover:bg-carolina-300;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full text-sm font-medium transition;
+    @apply border border-line text-chalk hover:border-carolina-400/60 hover:bg-white/[0.04];
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-dash {
+    animation: none;
+  }
+}
