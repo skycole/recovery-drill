@@ -82,6 +82,12 @@ pnpm dev
 React 19, Vite, Tailwind CSS 4, Framer Motion, Vitest and Testing Library. No backend, no storage, no analytics. The
 only network request is the web font.
 
+## Hosting and recovery design
+
+[`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) is a design for hosting this app on AWS and on Azure: recovery targets
+per component, the failover path, who can change what, what the provider secures versus what I secure, and the tests
+that would prove a recovery works. It is a design, not a deployment. The app itself is a static build with no backend.
+
 ## AI-built, human-directed
 
 Built with AI coding agents. Sky designed it, directed it, reviewed it and verified it. The component was first built
