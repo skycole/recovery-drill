@@ -91,8 +91,19 @@ that would prove a recovery works. It is a design, not a deployment. The app its
 ## AI-built, human-directed
 
 Built with AI coding agents. Sky designed it, directed it, reviewed it and verified it. The component was first built
-for skycole.ai. For this repo, Claude (Anthropic) pulled the logic out into a pure module and wrote the tests. Every
-test count above was re-run on this exact code before it was published.
+for skycole.ai. For this repo, Claude (Anthropic) pulled the logic out into a pure module and wrote the tests.
+
+How the work was controlled, because agents fail in predictable ways:
+
+- **The agent does not grade its own work.** A separate review session that had not seen the code read the
+  export cold, across this repo and its sibling exports, and reported 11 wording and accuracy issues. All 11 were
+  fixed before publishing.
+- **Claims are re-run, not remembered.** Every test count above was re-run on this exact code, and the scoring rule in
+  the README is the one the tests check.
+- **A gate in front of publishing.** Before anything left the machine it was scanned for credentials, local file
+  paths, and personal or employer references, and the history was scanned again before the first push.
+- **Logic and display are separate on purpose.** Pure functions hold the rules, so an agent can change the screen
+  without being able to change how a run is scored, and the tests catch it if it tries.
 
 ## License
 
